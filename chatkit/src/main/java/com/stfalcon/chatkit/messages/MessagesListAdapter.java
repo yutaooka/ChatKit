@@ -78,8 +78,8 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
      * @param senderId    identifier of sender.
      * @param imageLoader image loading method.
      */
-    public MessagesListAdapter(String senderId, ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
-        this(senderId, new MessageHolders(), imageLoader, lifecycleOwner);
+    public MessagesListAdapter(String senderId, LifecycleOwner lifecycleOwner, ImageLoader imageLoader) {
+        this(senderId, new MessageHolders(), lifecycleOwner, imageLoader);
     }
 
     /**
@@ -90,7 +90,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
      * @param imageLoader image loading method.
      */
     public MessagesListAdapter(String senderId, MessageHolders holders,
-                               ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
+                               LifecycleOwner lifecycleOwner, ImageLoader imageLoader) {
         this.senderId = senderId;
         this.holders = holders;
         this.imageLoader = imageLoader;

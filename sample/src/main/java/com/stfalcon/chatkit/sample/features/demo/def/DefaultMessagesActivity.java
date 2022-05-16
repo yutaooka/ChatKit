@@ -52,7 +52,7 @@ public class DefaultMessagesActivity extends DemoMessagesActivity
     }
 
     private void initAdapter() {
-        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, super.imageLoader, this);
+        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, this, super.imageLoader);
         super.messagesAdapter.enableSelectionMode(this);
         super.messagesAdapter.setLoadMoreListener(this);
         super.messagesAdapter.registerViewClickListener(R.id.messageUserAvatar,

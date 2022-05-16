@@ -83,7 +83,7 @@ public class CustomHolderMessagesActivity extends DemoMessagesActivity
                         CustomOutgoingImageMessageViewHolder.class,
                         R.layout.item_custom_outgoing_image_message);
 
-        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holdersConfig, super.imageLoader, this);
+        super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holdersConfig, this, super.imageLoader);
         super.messagesAdapter.setOnMessageLongClickListener(this);
         super.messagesAdapter.setLoadMoreListener(this);
         messagesList.setAdapter(super.messagesAdapter);

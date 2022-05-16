@@ -2,6 +2,8 @@ package com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.dialogs;
 
 import android.view.View;
 
+import androidx.lifecycle.LifecycleOwner;
+
 import com.stfalcon.chatkit.dialogs.DialogsListAdapter;
 import com.stfalcon.chatkit.sample.R;
 import com.stfalcon.chatkit.sample.common.data.model.Dialog;
@@ -20,8 +22,8 @@ public class CustomDialogViewHolder
     }
 
     @Override
-    public void onBind(Dialog dialog) {
-        super.onBind(dialog);
+    public void onBind(Dialog dialog, LifecycleOwner lifecycleOwner) {
+        super.onBind(dialog, lifecycleOwner);
 
         if (dialog.getUsers().size() > 1) {
             onlineIndicator.setVisibility(View.GONE);

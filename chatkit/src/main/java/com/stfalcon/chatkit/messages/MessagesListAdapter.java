@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.stfalcon.chatkit.R;
@@ -69,6 +70,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
     private MessagesListStyle messagesListStyle;
     private DateFormatter.Formatter dateHeadersFormatter;
     private SparseArray<OnMessageViewClickListener> viewClickListenersArray = new SparseArray<>();
+    private LifecycleOwner lifecycleOwner;
 
     /**
      * For default list item layout and view holder.
@@ -76,8 +78,8 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
      * @param senderId    identifier of sender.
      * @param imageLoader image loading method.
      */
-    public MessagesListAdapter(String senderId, ImageLoader imageLoader) {
-        this(senderId, new MessageHolders(), imageLoader);
+    public MessagesListAdapter(String senderId, ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
+        this(senderId, new MessageHolders(), imageLoader, lifecycleOwner);
     }
 
     /**
@@ -88,11 +90,12 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
      * @param imageLoader image loading method.
      */
     public MessagesListAdapter(String senderId, MessageHolders holders,
-                               ImageLoader imageLoader) {
+                               ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
         this.senderId = senderId;
         this.holders = holders;
         this.imageLoader = imageLoader;
         this.items = new ArrayList<>();
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     @Override
@@ -108,7 +111,8 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
                 getMessageClickListener(wrapper),
                 getMessageLongClickListener(wrapper),
                 dateHeadersFormatter,
-                viewClickListenersArray);
+                viewClickListenersArray,
+                lifecycleOwner);
     }
 
     @Override
@@ -946,7 +950,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
         }
 
         @Override
-        public void onBind(Date date) {
+        public void onBind(Date date, LifecycleOwner lifecycleOwner) {
             if (text != null) {
                 String formattedDate = null;
                 if (dateHeadersFormatter != null) formattedDate = dateHeadersFormatter.format(date);

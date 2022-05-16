@@ -3,6 +3,8 @@ package com.stfalcon.chatkit.sample.features.demo.custom.media.holders;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.lifecycle.LifecycleOwner;
+
 import com.stfalcon.chatkit.messages.MessageHolders;
 import com.stfalcon.chatkit.sample.R;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
@@ -25,8 +27,8 @@ public class OutgoingVoiceMessageViewHolder
     }
 
     @Override
-    public void onBind(Message message) {
-        super.onBind(message);
+    public void onBind(Message message, LifecycleOwner lifecycleOwner) {
+        super.onBind(message, lifecycleOwner);
         tvDuration.setText(
                 FormatUtils.getDurationString(
                         message.getVoice().getDuration()));

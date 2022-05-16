@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.stfalcon.chatkit.R;
@@ -63,14 +64,15 @@ public class DialogsListAdapter<DIALOG extends IDialog>
     private OnDialogViewLongClickListener<DIALOG> onDialogViewLongClickListener;
     private DialogListStyle dialogStyle;
     private DateFormatter.Formatter datesFormatter;
+    private LifecycleOwner lifecycleOwner;
 
     /**
      * For default list item layout and view holder
      *
      * @param imageLoader image loading method
      */
-    public DialogsListAdapter(ImageLoader imageLoader) {
-        this(R.layout.item_dialog, DialogViewHolder.class, imageLoader);
+    public DialogsListAdapter(ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
+        this(R.layout.item_dialog, DialogViewHolder.class, imageLoader, lifecycleOwner);
     }
 
     /**
@@ -79,8 +81,8 @@ public class DialogsListAdapter<DIALOG extends IDialog>
      * @param itemLayoutId custom list item resource id
      * @param imageLoader  image loading method
      */
-    public DialogsListAdapter(@LayoutRes int itemLayoutId, ImageLoader imageLoader) {
-        this(itemLayoutId, DialogViewHolder.class, imageLoader);
+    public DialogsListAdapter(@LayoutRes int itemLayoutId, ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
+        this(itemLayoutId, DialogViewHolder.class, imageLoader, lifecycleOwner);
     }
 
     /**
@@ -91,10 +93,11 @@ public class DialogsListAdapter<DIALOG extends IDialog>
      * @param imageLoader  image loading method
      */
     public DialogsListAdapter(@LayoutRes int itemLayoutId, Class<? extends BaseDialogViewHolder> holderClass,
-                              ImageLoader imageLoader) {
+                              ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
         this.itemLayoutId = itemLayoutId;
         this.holderClass = holderClass;
         this.imageLoader = imageLoader;
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     @SuppressWarnings("unchecked")
@@ -106,7 +109,7 @@ public class DialogsListAdapter<DIALOG extends IDialog>
         holder.setOnLongItemClickListener(onLongItemClickListener);
         holder.setOnDialogViewLongClickListener(onDialogViewLongClickListener);
         holder.setDatesFormatter(datesFormatter);
-        holder.onBind(items.get(position));
+        holder.onBind(items.get(position), lifecycleOwner);
     }
 
     @Override
@@ -631,7 +634,7 @@ public class DialogsListAdapter<DIALOG extends IDialog>
 
 
         @Override
-        public void onBind(final DIALOG dialog) {
+        public void onBind(final DIALOG dialog, LifecycleOwner lifecycleOwner) {
             if (dialog.getUnreadCount() > 0) {
                 applyUnreadStyle();
             } else {

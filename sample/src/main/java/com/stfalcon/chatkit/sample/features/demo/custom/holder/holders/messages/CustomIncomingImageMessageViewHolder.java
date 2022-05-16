@@ -2,6 +2,8 @@ package com.stfalcon.chatkit.sample.features.demo.custom.holder.holders.messages
 
 import android.view.View;
 
+import androidx.lifecycle.LifecycleOwner;
+
 import com.stfalcon.chatkit.messages.MessageHolders;
 import com.stfalcon.chatkit.sample.R;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
@@ -20,8 +22,8 @@ public class CustomIncomingImageMessageViewHolder
     }
 
     @Override
-    public void onBind(Message message) {
-        super.onBind(message);
+    public void onBind(Message message, LifecycleOwner lifecycleOwner) {
+        super.onBind(message, lifecycleOwner);
 
         boolean isOnline = message.getUser().isOnline();
         if (isOnline) {

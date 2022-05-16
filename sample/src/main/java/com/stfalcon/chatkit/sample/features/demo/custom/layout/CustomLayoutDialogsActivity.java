@@ -34,7 +34,7 @@ public class CustomLayoutDialogsActivity extends DemoDialogsActivity {
     }
 
     private void initAdapter() {
-        super.dialogsAdapter = new DialogsListAdapter<>(R.layout.item_custom_dialog, super.imageLoader);
+        super.dialogsAdapter = new DialogsListAdapter<>(R.layout.item_custom_dialog, super.imageLoader, this);
         super.dialogsAdapter.setItems(DialogsFixtures.getDialogs());
 
         super.dialogsAdapter.setOnDialogClickListener(this);

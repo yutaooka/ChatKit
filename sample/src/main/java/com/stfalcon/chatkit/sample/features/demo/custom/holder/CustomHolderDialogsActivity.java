@@ -38,7 +38,7 @@ public class CustomHolderDialogsActivity extends DemoDialogsActivity {
         super.dialogsAdapter = new DialogsListAdapter<>(
                 R.layout.item_custom_dialog_view_holder,
                 CustomDialogViewHolder.class,
-                super.imageLoader);
+                super.imageLoader, this);
 
         super.dialogsAdapter.setItems(DialogsFixtures.getDialogs());
 

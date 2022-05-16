@@ -1,5 +1,6 @@
 package com.stfalcon.chatkit.messages;
 
+import android.content.Context;
 import android.text.Spannable;
 import android.text.method.LinkMovementMethod;
 import android.util.SparseArray;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
+import androidx.lifecycle.LifecycleOwner;
 
 import com.stfalcon.chatkit.R;
 import com.stfalcon.chatkit.commons.ImageLoader;
@@ -569,7 +571,8 @@ public class MessageHolders {
                         final View.OnClickListener onMessageClickListener,
                         final View.OnLongClickListener onMessageLongClickListener,
                         final DateFormatter.Formatter dateHeadersFormatter,
-                        final SparseArray<MessagesListAdapter.OnMessageViewClickListener> clickListenersArray) {
+                        final SparseArray<MessagesListAdapter.OnMessageViewClickListener> clickListenersArray,
+                        final LifecycleOwner lifecycleOwner) {
 
         if (item instanceof IMessage) {
             ((MessageHolders.BaseMessageViewHolder) holder).isSelected = isSelected;
@@ -588,7 +591,7 @@ public class MessageHolders {
             ((MessageHolders.DefaultDateHeaderViewHolder) holder).dateHeadersFormatter = dateHeadersFormatter;
         }
 
-        holder.onBind(item);
+        holder.onBind(item, lifecycleOwner);
     }
 
 
@@ -756,8 +759,8 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(MESSAGE message) {
-            super.onBind(message);
+        public void onBind(MESSAGE message, LifecycleOwner lifecycleOwner) {
+            super.onBind(message, lifecycleOwner);
             if (bubble != null) {
                 bubble.setSelected(isSelected());
             }
@@ -815,8 +818,8 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(MESSAGE message) {
-            super.onBind(message);
+        public void onBind(MESSAGE message, LifecycleOwner lifecycleOwner) {
+            super.onBind(message, lifecycleOwner);
             if (bubble != null) {
                 bubble.setSelected(isSelected());
             }
@@ -874,8 +877,8 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(MESSAGE message) {
-            super.onBind(message);
+        public void onBind(MESSAGE message, LifecycleOwner lifecycleOwner) {
+            super.onBind(message, lifecycleOwner);
             if (image != null && imageLoader != null) {
                 imageLoader.loadImage(image, message.getImageUrl(), getPayloadForImageLoader(message));
             }
@@ -944,8 +947,8 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(MESSAGE message) {
-            super.onBind(message);
+        public void onBind(MESSAGE message, LifecycleOwner lifecycleOwner) {
+            super.onBind(message, lifecycleOwner);
             if (image != null && imageLoader != null) {
                 imageLoader.loadImage(image, message.getImageUrl(), getPayloadForImageLoader(message));
             }
@@ -1009,7 +1012,7 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(Date date) {
+        public void onBind(Date date, LifecycleOwner lifecycleOwner) {
             if (text != null) {
                 String formattedDate = null;
                 if (dateHeadersFormatter != null) formattedDate = dateHeadersFormatter.format(date);
@@ -1052,12 +1055,13 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(MESSAGE message) {
+        public void onBind(MESSAGE message, LifecycleOwner lifecycleOwner) {
             if (time != null) {
                 time.setText(DateFormatter.format(message.getCreatedAt(), DateFormatter.Template.TIME));
             }
 
             if (userAvatar != null) {
+
                 boolean isAvatarExists = imageLoader != null
                         && message.getUser().getAvatar() != null
                         && !message.getUser().getAvatar().isEmpty();
@@ -1110,7 +1114,7 @@ public class MessageHolders {
         }
 
         @Override
-        public void onBind(MESSAGE message) {
+        public void onBind(MESSAGE message, LifecycleOwner lifecycleOwner) {
             if (time != null) {
                 time.setText(DateFormatter.format(message.getCreatedAt(), DateFormatter.Template.TIME));
             }

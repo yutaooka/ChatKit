@@ -11,10 +11,10 @@
         android:id="@id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/message_outcoming_bubble_margin_left"
-        android:layout_marginStart="@dimen/message_outcoming_bubble_margin_left"
+        android:layout_marginLeft="@dimen/message_outgoing_bubble_margin_left"
+        android:layout_marginStart="@dimen/message_outgoing_bubble_margin_left"
         android:adjustViewBounds="true"
-        app:siShape="@drawable/bg_custom_outcoming_message"
+        app:siShape="@drawable/bg_custom_outgoing_message"
         app:siSquare="false" />
 
     <TextView

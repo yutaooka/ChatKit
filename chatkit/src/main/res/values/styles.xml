@@ -27,7 +27,7 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="ChatMessageLayoutOutcoming">
+    <style name="ChatMessageLayoutOutgoing">
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingRight">16dp</item>

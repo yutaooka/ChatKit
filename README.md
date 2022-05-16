@@ -14,7 +14,7 @@ ChatKit is a library designed to simplify the development of UI for such a trivi
 * Default and custom media messages;
 * Fully customizable layouts - setting styles out of the box (use your own colors, text appearances, drawables, selectors and sizes) or even create your own custom markup or/and holders for unique behaviour;
 * List of dialogs, including tete-a-tete and group chats, markers for unread messages and last user message view;
-* List of messages (incoming and outcoming) with history pagination and already calculated dates headers;
+* List of messages (incoming and outgoing) with history pagination and already calculated dates headers;
 * Different avatars with no specific realization of image loading - you can use any library you want;
 * Selection mode for interacting with messages;
 * Links highlighting
@@ -69,7 +69,7 @@ android.enableJetifier=true
 ### Proguard
 If you are using ProGuard you might need to add rules:
 ```
--keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutcomingTextMessageViewHolder {
+-keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutgoingTextMessageViewHolder {
      public <init>(android.view.View, java.lang.Object);
      public <init>(android.view.View);
  }
@@ -81,7 +81,7 @@ If you are using ProGuard you might need to add rules:
      public <init>(android.view.View, java.lang.Object);
      public <init>(android.view.View);
  }
--keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutcomingImageMessageViewHolder {
+-keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutgoingImageMessageViewHolder {
      public <init>(android.view.View, java.lang.Object);
      public <init>(android.view.View);
  }

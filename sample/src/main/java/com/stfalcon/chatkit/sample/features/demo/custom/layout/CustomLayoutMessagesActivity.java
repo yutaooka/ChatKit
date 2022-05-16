@@ -58,9 +58,9 @@ public class CustomLayoutMessagesActivity extends DemoMessagesActivity
     private void initAdapter() {
         MessageHolders holdersConfig = new MessageHolders()
                 .setIncomingTextLayout(R.layout.item_custom_incoming_text_message)
-                .setOutcomingTextLayout(R.layout.item_custom_outcoming_text_message)
+                .setOutgoingTextLayout(R.layout.item_custom_outgoing_text_message)
                 .setIncomingImageLayout(R.layout.item_custom_incoming_image_message)
-                .setOutcomingImageLayout(R.layout.item_custom_outcoming_image_message);
+                .setOutgoingImageLayout(R.layout.item_custom_outgoing_image_message);
 
         super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holdersConfig, super.imageLoader);
         super.messagesAdapter.setOnMessageLongClickListener(this);

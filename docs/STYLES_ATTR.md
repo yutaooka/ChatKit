@@ -43,7 +43,7 @@
 | ------------- |-------------|
 | `textAutoLink` | Enables links highlighting in messages with allowable modes (none, all, email, map, phone, web) |
 | `incomingTextLinkColor` | Sets color for incoming links highlight |
-| `outcomingTextLinkColor` | Sets color for outcoming links highlight |
+| `outgoingTextLinkColor` | Sets color for outgoing links highlight |
 | `incomingAvatarWidth` | Sets width of avatar view in incoming message | 
 | `incomingAvatarHeight` | Sets height of avatar view in incoming message | 
 | `incomingBubbleDrawable` | Sets custom drawable for incoming message bubble. You can set drawable selector with preseed and selected states|
@@ -51,7 +51,7 @@
 | `incomingDefaultBubblePressedColor` | Sets color for default incoming message bubble on state pressed|
 | `incomingDefaultBubbleSelectedColor` | Sets color for default incoming message bubble on state selected|
 | `incomingImageOverlayDrawable` | Sets overlay drawable for incoming image message (use it for selector) |
-| `incomingDefaultImageOverlayPressedColor` | Sets color for selected state for default outcoming image message overlay |
+| `incomingDefaultImageOverlayPressedColor` | Sets color for selected state for default outgoing image message overlay |
 | `incomingDefaultImageOverlaySelectedColor` | Sets color for selected state for default incoming image message overlay |
 | `incomingBubblePaddingLeft` | Sets left padding for incoming message bubble |
 | `incomingBubblePaddingRight` | Sets right padding for incoming message bubble |
@@ -66,26 +66,26 @@
 | `incomingImageTimeTextColor` | Sets incoming image message time color |
 | `incomingImageTimeTextSize` | Sets incoming image message time size |
 | `incomingImageTimeTextStyle` | Sets incoming image message time style (normal, bold, italic) |
-| `outcomingBubbleDrawable` | Sets custom drawable for incoming message bubble. You can set drawable selector with pressed and selected states|
-| `outcomingDefaultBubbleColor` | Sets color for default outcoming message bubble|
-| `outcomingDefaultBubblePressedColor` | Sets color for default outcoming message bubble on state pressed|
-| `outcomingDefaultBubbleSelectedColor` | Sets color for default outcoming message bubble on state selected|
-| `outcomingImageOverlayDrawable` | Sets overlay drawable for outcoming image message (use it for selector) |
-| `outcomingDefaultImageOverlayPressedColor` | Sets color for pressed state for default outcoming image message overlay |
-| `outcomingDefaultImageOverlaySelectedColor` | Sets color for selected state for default outcoming image message overlay |
-| `outcomingBubblePaddingLeft` | Sets left padding for outcoming message bubble |
-| `outcomingBubblePaddingRight` | Sets right padding for outcoming message bubble |
-| `outcomingBubblePaddingTop` | Sets top padding for outcoming message bubble |
-| `outcomingBubblePaddingBottom` | Sets bottom padding for outcoming message bubble |
-| `outcomingTextColor` | Sets outcoming message text color |
-| `outcomingTextSize` | Sets outcoming message text size |
-| `outcomingTextStyle` | Sets outcoming message text style (normal, bold, italic) |
-| `outcomingTimeTextColor` | Sets outcoming text message time color |
-| `outcomingTimeTextSize` | Sets outcoming text message time size |
-| `outcomingTimeTextStyle` | Sets outcoming text message time style (normal, bold, italic) |
-| `outcomingImageTimeTextColor` | Sets outcoming image message time color |
-| `outcomingImageTimeTextSize` | Sets outcoming image message time size |
-| `outcomingImageTimeTextStyle` | Sets outcoming image message time style (normal, bold, italic) |
+| `outgoingBubbleDrawable` | Sets custom drawable for incoming message bubble. You can set drawable selector with pressed and selected states|
+| `outgoingDefaultBubbleColor` | Sets color for default outgoing message bubble|
+| `outgoingDefaultBubblePressedColor` | Sets color for default outgoing message bubble on state pressed|
+| `outgoingDefaultBubbleSelectedColor` | Sets color for default outgoing message bubble on state selected|
+| `outgoingImageOverlayDrawable` | Sets overlay drawable for outgoing image message (use it for selector) |
+| `outgoingDefaultImageOverlayPressedColor` | Sets color for pressed state for default outgoing image message overlay |
+| `outgoingDefaultImageOverlaySelectedColor` | Sets color for selected state for default outgoing image message overlay |
+| `outgoingBubblePaddingLeft` | Sets left padding for outgoing message bubble |
+| `outgoingBubblePaddingRight` | Sets right padding for outgoing message bubble |
+| `outgoingBubblePaddingTop` | Sets top padding for outgoing message bubble |
+| `outgoingBubblePaddingBottom` | Sets bottom padding for outgoing message bubble |
+| `outgoingTextColor` | Sets outgoing message text color |
+| `outgoingTextSize` | Sets outgoing message text size |
+| `outgoingTextStyle` | Sets outgoing message text style (normal, bold, italic) |
+| `outgoingTimeTextColor` | Sets outgoing text message time color |
+| `outgoingTimeTextSize` | Sets outgoing text message time size |
+| `outgoingTimeTextStyle` | Sets outgoing text message time style (normal, bold, italic) |
+| `outgoingImageTimeTextColor` | Sets outgoing image message time color |
+| `outgoingImageTimeTextSize` | Sets outgoing image message time size |
+| `outgoingImageTimeTextStyle` | Sets outgoing image message time style (normal, bold, italic) |
 | `dateHeaderTextColor` | Sets date header text color |
 | `dateHeaderTextSize` | Sets date header text size |
 | `dateHeaderPadding` | Sets date header view padding |

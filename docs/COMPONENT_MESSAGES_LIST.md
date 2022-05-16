@@ -239,7 +239,7 @@ messagesAdapter.setDateHeadersFormatter(formatter);
 
 #### Styling via attributes
 
-The simplest way to customize appearance is to use `MessageList` widget attributes. With them we can set up a default background color for incoming and outcoming messages, and even the colors for their pushed conditions and single selection. You can also change color and size for message font, send time and data in the headers. Now, by defining attributes this way:
+The simplest way to customize appearance is to use `MessageList` widget attributes. With them we can set up a default background color for incoming and outgoing messages, and even the colors for their pushed conditions and single selection. You can also change color and size for message font, send time and data in the headers. Now, by defining attributes this way:
 
 ```xml
 <com.stfalcon.chatkit.messages.MessagesList
@@ -254,20 +254,20 @@ The simplest way to customize appearance is to use `MessageList` widget attribut
    app:incomingTextColor="@color/black"
    app:incomingTextLinkColor="@color/green"
    app:incomingTextSize="18sp"
-   app:outcomingDefaultBubbleColor="@color/green"
-   app:outcomingDefaultBubblePressedColor="@color/green_dark"
-   app:outcomingDefaultBubbleSelectedColor="@color/gray_dark_transparent"
-   app:outcomingDefaultImageOverlayPressedColor="@color/black_10"
-   app:outcomingDefaultImageOverlaySelectedColor="@color/gray_transparent"
-   app:outcomingTextColor="@color/white"
-   app:outcomingTextLinkColor="@color/brown"
-   app:outcomingTextSize="18sp"/>
+   app:outgoingDefaultBubbleColor="@color/green"
+   app:outgoingDefaultBubblePressedColor="@color/green_dark"
+   app:outgoingDefaultBubbleSelectedColor="@color/gray_dark_transparent"
+   app:outgoingDefaultImageOverlayPressedColor="@color/black_10"
+   app:outgoingDefaultImageOverlaySelectedColor="@color/gray_transparent"
+   app:outgoingTextColor="@color/white"
+   app:outgoingTextLinkColor="@color/brown"
+   app:outgoingTextSize="18sp"/>
 ```
 ...we can get something like this:
 <p align="center">
 <img src="../images/CHAT_CUSTOM_ATTRS_STYLE.png">
 </p>
-If the shape of bubble doesn't suits you, set your own drawable through the `incomingBubbleDrawable` / `outcomingBubbleDrawable` attribute. However, color customization attributes would not work for setting their state color, you should describe this behavior using selectors. Also you can set padding for each of them by using `incomingBubblePaddingXXX` and `outcomingBubblePaddingXXX` attributes. In the same way you can set custom overlay drawable for image messages (without padding, of course).
+If the shape of bubble doesn't suits you, set your own drawable through the `incomingBubbleDrawable` / `outgoingBubbleDrawable` attribute. However, color customization attributes would not work for setting their state color, you should describe this behavior using selectors. Also you can set padding for each of them by using `incomingBubblePaddingXXX` and `outgoingBubblePaddingXXX` attributes. In the same way you can set custom overlay drawable for image messages (without padding, of course).
 
 In case if you don’t like default data format, you can set it with only one line by using java date format — `dateHeaderFormat="dd.MM.yy"`
 
@@ -284,12 +284,12 @@ But what if you need not only to change the appearance of the elements, but also
 
 For better understanding see how [custom layout looks like](https://github.com/stfalcon-studio/ChatKit/blob/master/sample/src/main/res/layout/item_custom_incoming_text_message.xml)
 
-After a layout was created, you need to put it into `HoldersConfig` object, which has appropriate methods for each layout files: `setIncomingLayout(int layoutRes)`, `setOutcomingLayout(int layoutRes)` `setDateHeaderLayout(int layoutRes)`. To hook up a config object, you need to transfer it to adapter through a constructor:
+After a layout was created, you need to put it into `HoldersConfig` object, which has appropriate methods for each layout files: `setIncomingLayout(int layoutRes)`, `setOutgoingLayout(int layoutRes)` `setDateHeaderLayout(int layoutRes)`. To hook up a config object, you need to transfer it to adapter through a constructor:
 
 ```java
 MessagesListAdapter.HoldersConfig holdersConfig = new MessagesListAdapter.HoldersConfig();
 holdersConfig.setIncomingLayout(R.layout.item_custom_incoming_message);
-holdersConfig.setOutcomingLayout(R.layout.item_custom_outcoming_message);
+holdersConfig.setOutgoingLayout(R.layout.item_custom_outgoing_message);
 adapter = new MessagesListAdapter<>(senderId, holdersConfig, imageLoader);
 ```
 <p align="center">
@@ -299,29 +299,29 @@ adapter = new MessagesListAdapter<>(senderId, holdersConfig, imageLoader);
 
 #### Not enough features? Create your own holder!
 
-Sometimes a message text displaying is not enough. For example, you need to add the message processing status and reactions to the message (as in Slack). Of course, for this purpose you have to create your own layout, but you can’t do it without changing the logic of ViewHolder. `HolderConfig` can do the trick. You can transfer your own holder class with `setIncomingHolder(Class holderClass)`, `setOutcomingHolder(Class holderClass)` and `setDateHeaderHolder(Class holderClass)` methods in it. For convenience' sake, it also contains methods for simultaneous adding of layout file and holder:
+Sometimes a message text displaying is not enough. For example, you need to add the message processing status and reactions to the message (as in Slack). Of course, for this purpose you have to create your own layout, but you can’t do it without changing the logic of ViewHolder. `HolderConfig` can do the trick. You can transfer your own holder class with `setIncomingHolder(Class holderClass)`, `setOutgoingHolder(Class holderClass)` and `setDateHeaderHolder(Class holderClass)` methods in it. For convenience' sake, it also contains methods for simultaneous adding of layout file and holder:
 
 ```java
 holdersConfig.setIncoming(CustomIncomingMessageViewHolder.class,
         R.layout.item_custom_holder_incoming_message);
-holdersConfig.setOutcoming(CustomOutcomingMessageViewHolder.class,
-        R.layout.item_custom_holder_outcoming_message);
+holdersConfig.setOutgoing(CustomOutgoingMessageViewHolder.class,
+        R.layout.item_custom_holder_outgoing_message);
 ```
 To create your own holder, you need to inherit your class from `MessagesListAdapter.BaseMessageViewHolder<>`, and transfer your message class to generic type, because on the assumption of it the `onBind(IMessage message)` method will be typified. This method is similar to `onBindViewHolder()` method from `RecyclerView.Adapter` class: you can manipulate your data from it and upload images through `protected` of the `ImageLoader` field, and get `isSelected` state.
 
 However, if you’re going to add new features without rewriting behavior from a scratch, you can inherit standard realization class from a holder you need:
 
 * `IncomingMessageViewHolder` - incoming message holder;
-* `OutcomingMessageViewHolder` - outgoing message holder;
+* `OutgoingMessageViewHolder` - outgoing message holder;
 * `DefaultDateHeaderViewHolder` - date separator holder.
 
 For example, you can add status for outgoing messages with only few lines:
 
 ```java
-public class CustomOutcomingMessageViewHolder
-       extends MessagesListAdapter.OutcomingMessageViewHolder<Message> {
+public class CustomOutgoingMessageViewHolder
+       extends MessagesListAdapter.OutgoingMessageViewHolder<Message> {
 
-   public CustomOutcomingMessageViewHolder(View itemView, Object payload) {
+   public CustomOutgoingMessageViewHolder(View itemView, Object payload) {
        super(itemView, payload);
    }
 
@@ -393,7 +393,7 @@ MessageHolders holdersConfig = new MessageHolders()
 #### Custom content types
 We understand that ony images as media messages are often not enough. Therefore, we implemented the ability to add custom content types for displaying different types of content (geopoints, video, voice messages etc.).
 
-To do this, you just need to implement the `MessageContentType` interface. However, you do not need to override any methods at his time. After that, you need to prepare your own layout files for displaying incoming and outcoming messages of this type, as well as ViewHolders (for binding data to view). And after that you can register them in the adapter via the `MessageHolders` object.
+To do this, you just need to implement the `MessageContentType` interface. However, you do not need to override any methods at his time. After that, you need to prepare your own layout files for displaying incoming and outgoing messages of this type, as well as ViewHolders (for binding data to view). And after that you can register them in the adapter via the `MessageHolders` object.
 
 For example, let's add support of voice messages:
 ```java
@@ -402,14 +402,14 @@ MessageHolders holders = new MessageHolders()
                CONTENT_TYPE_VOICE,
                IncomingVoiceMessageViewHolder.class,
                R.layout.item_custom_incoming_voice_message,
-               OutcomingVoiceMessageViewHolder.class,
-               R.layout.item_custom_outcoming_voice_message,
+               OutgoingVoiceMessageViewHolder.class,
+               R.layout.item_custom_outgoing_voice_message,
                contentChecker);
 
 
 super.messagesAdapter = new MessagesListAdapter<>(super.senderId, holders, super.imageLoader);
 ```
-We passed an identifier (which will come in handy to us a little later), markup files and ViewHolder classes for incoming and outcoming states, and `contentChecker` to the method. `ContentChecker` is an instance of the `MessageHolders.ContentChecker<Message>` class, where the content is checked for the registered type by its id:
+We passed an identifier (which will come in handy to us a little later), markup files and ViewHolder classes for incoming and outgoing states, and `contentChecker` to the method. `ContentChecker` is an instance of the `MessageHolders.ContentChecker<Message>` class, where the content is checked for the registered type by its id:
 ```java
 @Override
 public boolean hasContentFor(Message message, byte type) {
@@ -422,7 +422,7 @@ public boolean hasContentFor(Message message, byte type) {
    return false;
 }
 ```
-If the `hasContentFor` method returns `true` for the selected type, the corresponding item for that type will be created and the `onBind(Message message)` method of the registered ViewHolder will be called (the adapter itself recognizes and processes incoming and outcoming message types). In case the method returns `false`, the adapter will poll all other registered types. If there's no content for all known types, the message will be recognized as text.
+If the `hasContentFor` method returns `true` for the selected type, the corresponding item for that type will be created and the `onBind(Message message)` method of the registered ViewHolder will be called (the adapter itself recognizes and processes incoming and outgoing message types). In case the method returns `false`, the adapter will poll all other registered types. If there's no content for all known types, the message will be recognized as text.
 
 As the result, well get the following:
 <p align="center">

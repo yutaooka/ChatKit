@@ -15,7 +15,7 @@ import com.stfalcon.chatkit.sample.common.data.fixtures.MessagesFixtures;
 import com.stfalcon.chatkit.sample.common.data.model.Message;
 import com.stfalcon.chatkit.sample.features.demo.DemoMessagesActivity;
 import com.stfalcon.chatkit.sample.features.demo.custom.media.holders.IncomingVoiceMessageViewHolder;
-import com.stfalcon.chatkit.sample.features.demo.custom.media.holders.OutcomingVoiceMessageViewHolder;
+import com.stfalcon.chatkit.sample.features.demo.custom.media.holders.OutgoingVoiceMessageViewHolder;
 
 public class CustomMediaMessagesActivity extends DemoMessagesActivity
         implements MessageInput.InputListener,
@@ -86,8 +86,8 @@ public class CustomMediaMessagesActivity extends DemoMessagesActivity
                         CONTENT_TYPE_VOICE,
                         IncomingVoiceMessageViewHolder.class,
                         R.layout.item_custom_incoming_voice_message,
-                        OutcomingVoiceMessageViewHolder.class,
-                        R.layout.item_custom_outcoming_voice_message,
+                        OutgoingVoiceMessageViewHolder.class,
+                        R.layout.item_custom_outgoing_voice_message,
                         this);
 
 

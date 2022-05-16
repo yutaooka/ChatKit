@@ -95,7 +95,7 @@
 
 #FOR CHATKIT
 
--keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutcomingTextMessageViewHolder {
+-keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutgoingTextMessageViewHolder {
      public <init>(android.view.View, java.lang.Object);
      public <init>(android.view.View);
  }
@@ -107,7 +107,7 @@
      public <init>(android.view.View, java.lang.Object);
      public <init>(android.view.View);
  }
--keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutcomingImageMessageViewHolder {
+-keep class * extends com.stfalcon.chatkit.messages.MessageHolders$OutgoingImageMessageViewHolder {
      public <init>(android.view.View, java.lang.Object);
      public <init>(android.view.View);
  }

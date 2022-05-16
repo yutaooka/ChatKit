@@ -825,34 +825,34 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
         }
 
         /**
-         * This method is deprecated. Use {@link MessageHolders#setOutcomingTextConfig(Class, int)} instead.
+         * This method is deprecated. Use {@link MessageHolders#setOutgoingTextConfig(Class, int)} instead.
          *
          * @param holder holder class.
          * @param layout layout resource.
          */
         @Deprecated
-        public void setOutcoming(Class<? extends BaseMessageViewHolder<? extends IMessage>> holder, @LayoutRes int layout) {
-            super.setOutcomingTextConfig(holder, layout);
+        public void setOutgoing(Class<? extends BaseMessageViewHolder<? extends IMessage>> holder, @LayoutRes int layout) {
+            super.setOutgoingTextConfig(holder, layout);
         }
 
         /**
-         * This method is deprecated. Use {@link MessageHolders#setOutcomingTextHolder(Class)} instead.
+         * This method is deprecated. Use {@link MessageHolders#setOutgoingTextHolder(Class)} instead.
          *
          * @param holder holder class.
          */
         @Deprecated
-        public void setOutcomingHolder(Class<? extends BaseMessageViewHolder<? extends IMessage>> holder) {
-            super.setOutcomingTextHolder(holder);
+        public void setOutgoingHolder(Class<? extends BaseMessageViewHolder<? extends IMessage>> holder) {
+            super.setOutgoingTextHolder(holder);
         }
 
         /**
-         * This method is deprecated. Use {@link MessageHolders#setOutcomingTextLayout(int)} instead.
+         * This method is deprecated. Use {@link MessageHolders#setOutgoingTextLayout(int)} instead.
          *
          * @param layout layout resource.
          */
         @Deprecated
-        public void setOutcomingLayout(@LayoutRes int layout) {
-            this.setOutcomingTextLayout(layout);
+        public void setOutgoingLayout(@LayoutRes int layout) {
+            this.setOutgoingTextLayout(layout);
         }
 
         /**
@@ -982,13 +982,13 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
     }
 
     /**
-     * This class is deprecated. Use {@link MessageHolders.OutcomingTextMessageViewHolder} instead.
+     * This class is deprecated. Use {@link MessageHolders.OutgoingTextMessageViewHolder} instead.
      */
     @Deprecated
-    public static class OutcomingMessageViewHolder<MESSAGE extends IMessage>
-            extends MessageHolders.OutcomingTextMessageViewHolder<MESSAGE> {
+    public static class OutgoingMessageViewHolder<MESSAGE extends IMessage>
+            extends MessageHolders.OutgoingTextMessageViewHolder<MESSAGE> {
 
-        public OutcomingMessageViewHolder(View itemView) {
+        public OutgoingMessageViewHolder(View itemView) {
             super(itemView);
         }
     }

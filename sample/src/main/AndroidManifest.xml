@@ -10,7 +10,8 @@
 
         <activity
             android:name=".features.main.MainActivity"
-            android:theme="@style/BlueThemeNoActionBar">
+            android:theme="@style/BlueThemeNoActionBar"
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

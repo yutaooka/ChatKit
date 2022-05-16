@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
     buildToolsVersion '29.0.2'
 
     defaultConfig {
@@ -31,7 +31,7 @@ android {
                     from components.release
 
                     // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.github.stfalcon'
+                    groupId = 'com.github.yutaooka'
                     artifactId = 'chatkit'
                     version = '0.4.1'
                 }

@@ -71,8 +71,8 @@ public class DialogsListAdapter<DIALOG extends IDialog>
      *
      * @param imageLoader image loading method
      */
-    public DialogsListAdapter(ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
-        this(R.layout.item_dialog, DialogViewHolder.class, imageLoader, lifecycleOwner);
+    public DialogsListAdapter(LifecycleOwner lifecycleOwner, ImageLoader imageLoader) {
+        this(R.layout.item_dialog, DialogViewHolder.class, lifecycleOwner, imageLoader);
     }
 
     /**
@@ -81,8 +81,8 @@ public class DialogsListAdapter<DIALOG extends IDialog>
      * @param itemLayoutId custom list item resource id
      * @param imageLoader  image loading method
      */
-    public DialogsListAdapter(@LayoutRes int itemLayoutId, ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
-        this(itemLayoutId, DialogViewHolder.class, imageLoader, lifecycleOwner);
+    public DialogsListAdapter(@LayoutRes int itemLayoutId, LifecycleOwner lifecycleOwner, ImageLoader imageLoader) {
+        this(itemLayoutId, DialogViewHolder.class, lifecycleOwner, imageLoader);
     }
 
     /**
@@ -93,7 +93,7 @@ public class DialogsListAdapter<DIALOG extends IDialog>
      * @param imageLoader  image loading method
      */
     public DialogsListAdapter(@LayoutRes int itemLayoutId, Class<? extends BaseDialogViewHolder> holderClass,
-                              ImageLoader imageLoader, LifecycleOwner lifecycleOwner) {
+                              LifecycleOwner lifecycleOwner, ImageLoader imageLoader) {
         this.itemLayoutId = itemLayoutId;
         this.holderClass = holderClass;
         this.imageLoader = imageLoader;

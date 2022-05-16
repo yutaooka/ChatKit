@@ -35,7 +35,7 @@ public class DefaultDialogsActivity extends DemoDialogsActivity {
     }
 
     private void initAdapter() {
-        super.dialogsAdapter = new DialogsListAdapter<>(super.imageLoader, this);
+        super.dialogsAdapter = new DialogsListAdapter<>(this, super.imageLoader);
         super.dialogsAdapter.setItems(DialogsFixtures.getDialogs());
 
         super.dialogsAdapter.setOnDialogClickListener(this);

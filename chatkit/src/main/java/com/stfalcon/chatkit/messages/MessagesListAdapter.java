@@ -674,6 +674,10 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
         clipboard.setPrimaryClip(clip);
     }
 
+    RecyclerView.LayoutManager getLayoutManager() {
+        return this.layoutManager;
+    }
+
     void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
         this.layoutManager = layoutManager;
     }

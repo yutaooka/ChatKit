@@ -66,7 +66,7 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
     private OnMessageLongClickListener<MESSAGE> onMessageLongClickListener;
     private OnMessageViewLongClickListener<MESSAGE> onMessageViewLongClickListener;
     private ImageLoader imageLoader;
-    private RecyclerView.LayoutManager layoutManager;
+    public RecyclerView.LayoutManager layoutManager;
     private MessagesListStyle messagesListStyle;
     private DateFormatter.Formatter dateHeadersFormatter;
     private SparseArray<OnMessageViewClickListener> viewClickListenersArray = new SparseArray<>();
@@ -672,14 +672,6 @@ public class MessagesListAdapter<MESSAGE extends IMessage>
         ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText(copiedText, copiedText);
         clipboard.setPrimaryClip(clip);
-    }
-
-    RecyclerView.LayoutManager getLayoutManager() {
-        return this.layoutManager;
-    }
-
-    void setLayoutManager(RecyclerView.LayoutManager layoutManager) {
-        this.layoutManager = layoutManager;
     }
 
     void setStyle(MessagesListStyle style) {

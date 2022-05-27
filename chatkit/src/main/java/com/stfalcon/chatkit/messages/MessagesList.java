@@ -84,7 +84,7 @@ public class MessagesList extends RecyclerView {
 
         setItemAnimator(itemAnimator);
         setLayoutManager(layoutManager);
-        adapter.setLayoutManager(layoutManager);
+        adapter.layoutManager = layoutManager;
         adapter.setStyle(messagesListStyle);
 
         addOnScrollListener(new RecyclerScrollMoreListener(layoutManager, adapter));
